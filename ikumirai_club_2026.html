@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南魚沼市 中学校部活動・認定地域クラブ活動一覧 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f5f7;--text:#1d1d1f;--sub:#86868b;--card:#fff;
+  --border:#d2d2d7;--accent:#0071e3;
+  --badge-school-bg:#e8e8ed;--badge-school-text:#1d1d1f;
+  --badge-club-bg:#fff8e1;--badge-club-text:#7d5a00;--badge-club-border:#e8c84a;
+  --font:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","游ゴシック Medium","YuGothic","ヒラギノ角ゴ ProN W3",sans-serif;
+  --radius:20px;--shadow:0 4px 20px rgba(0,0,0,.08);--shadow-hover:0 12px 40px rgba(0,0,0,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* Announcement Bar */
+.ann-bar{background:#f0f0f0;border-bottom:1px solid var(--border);padding:9px 20px;text-align:center;font-size:12px;color:var(--sub);letter-spacing:.02em}
+.ann-bar strong{color:var(--text);font-weight:600}
+
+/* Hero */
+.hero{padding:88px 24px 72px;text-align:center;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
+.hero-eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:700;letter-spacing:-.03em;line-height:1.08;color:var(--text);margin-bottom:20px}
+.hero h1 span{display:block;font-size:clamp(20px,3.5vw,40px);font-weight:400;color:var(--sub);margin-top:8px;letter-spacing:-.01em}
+.hero-desc{font-size:17px;color:var(--sub);max-width:560px;margin:0 auto 12px;line-height:1.7}
+.hero-date{font-size:13px;color:#a0a0a5;margin-top:4px}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:36px;font-weight:700;letter-spacing:-.03em;color:var(--text)}
+.hero-stat .lbl{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* Filter Panel */
+.filter-wrap{position:sticky;top:0;z-index:100;background:rgba(245,245,247,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 24px}
+.filter-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.search-row{display:flex;gap:10px;align-items:center}
+.search-box{flex:1;position:relative}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--sub);pointer-events:none}
+#searchInput{width:100%;padding:10px 14px 10px 42px;border-radius:12px;border:1.5px solid var(--border);background:#fff;font-size:15px;font-family:var(--font);color:var(--text);outline:none;transition:border-color .2s}
+#searchInput:focus{border-color:var(--accent)}
+#searchInput::placeholder{color:#b0b0b8}
+.result-count{font-size:13px;color:var(--sub);white-space:nowrap;min-width:70px;text-align:right}
+.seg-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg-label{font-size:12px;color:var(--sub);font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.seg-btns{display:flex;background:#e8e8ed;border-radius:10px;padding:3px;gap:0}
+.seg-btns button{padding:6px 14px;border:none;background:transparent;border-radius:8px;font-size:13px;font-family:var(--font);color:var(--sub);cursor:pointer;transition:all .18s;font-weight:500}
+.seg-btns button.active{background:#fff;color:var(--text);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.day-btns{display:flex;gap:5px;flex-wrap:wrap}
+.day-btn{width:34px;height:34px;border:1.5px solid var(--border);background:#fff;border-radius:8px;font-size:13px;font-family:var(--font);color:var(--sub);cursor:pointer;font-weight:600;transition:all .18s;display:flex;align-items:center;justify-content:center}
+.day-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.day-btn:hover:not(.active){background:#e8e8ed;border-color:#c0c0c8}
+
+/* Main */
+.main{max-width:1200px;margin:0 auto;padding:32px 24px 80px}
+.sport-section{margin-bottom:56px}
+.sport-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sport-icon{font-size:28px;line-height:1}
+.sport-title{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.sport-count{font-size:13px;color:var(--sub);margin-left:auto}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 22px 20px;transition:transform .22s ease,box-shadow .22s ease;cursor:default;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.card.hidden{display:none}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:14px}
+.card-name{font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.3;flex:1}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.04em;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.badge-school{background:var(--badge-school-bg);color:var(--badge-school-text)}
+.badge-club{background:var(--badge-club-bg);color:var(--badge-club-text);border:1px solid var(--badge-club-border)}
+.badge-dot{width:6px;height:6px;border-radius:50%}
+.badge-school .badge-dot{background:#6e6e73}
+.badge-club .badge-dot{background:#e8c84a}
+.card-row{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--sub);margin-bottom:7px}
+.card-row:last-child{margin-bottom:0}
+.card-row-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.card-row-text{color:var(--text);line-height:1.5}
+.card-days{display:flex;gap:4px;flex-wrap:wrap;margin-top:12px}
+.day-chip{padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;background:#e8e8ed;color:var(--sub)}
+.day-chip.highlight{background:#ddf0ff;color:#0071e3}
+.card-divider{height:1px;background:var(--border);margin:14px 0}
+.card-fee{font-size:12px;color:var(--sub);line-height:1.6}
+.card-fee strong{color:var(--text);font-weight:600}
+.no-results{text-align:center;padding:80px 20px;color:var(--sub)}
+.no-results h3{font-size:22px;font-weight:600;margin-bottom:8px;color:var(--text)}
+
+/* Footer */
+footer{background:#f0f0f0;border-top:1px solid var(--border);padding:48px 24px 40px;margin-top:0}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:16px}
+.footnotes{list-style:none}
+.footnotes li{font-size:12px;color:var(--sub);padding:6px 0;border-bottom:1px solid var(--border);line-height:1.7;display:flex;gap:8px}
+.footnotes li:last-child{border-bottom:none}
+.fn-index{color:var(--sub);font-weight:700;flex-shrink:0;min-width:16px}
+.footer-copy{margin-top:24px;font-size:11px;color:#a0a0a5;text-align:center}
+
+@media(max-width:680px){
+  .hero h1{font-size:32px}
+  .cards-grid{grid-template-columns:1fr}
+  .seg-row{flex-wrap:wrap}
+  .filter-wrap{padding:12px 16px}
+  .main{padding:24px 16px 60px}
+  .hero{padding:60px 20px 48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ① Announcement Bar -->
+<div class="ann-bar">
+  <strong>お知らせ</strong> &nbsp;このページに掲載しているすべての活動情報は、<strong>令和8年3月時点</strong>の内容です。活動内容は変更される場合があります。
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+  <div class="hero-eyebrow">令和8年度 南魚沼市教育委員会</div>
+  <h1>
+    子どもたちの、あしたの<br>スポーツ・文化活動。
+    <span>南魚沼市 中学校部活動・認定地域クラブ活動一覧</span>
+  </h1>
+  <p class="hero-desc">
+    大和中・八海中・六日町中・塩沢中の4校と認定地域クラブの活動情報を一覧で確認できます。種目・曜日・形態で絞り込んで、お子さんにぴったりの活動を見つけましょう。
+  </p>
+  <!-- ② Sub-header date info -->
+  <p class="hero-date">※ 掲載情報はすべて令和8年3月時点のものです。最新情報は各クラブへご確認ください。</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num" id="statTotal">—</div><div class="lbl">総クラブ数</div></div>
+    <div class="hero-stat"><div class="num" id="statSchool">—</div><div class="lbl">学校部活動</div></div>
+    <div class="hero-stat"><div class="num" id="statClub">—</div><div class="lbl">認定地域クラブ</div></div>
+    <div class="hero-stat"><div class="num">18</div><div class="lbl">競技・種目</div></div>
+  </div>
+</div>
+
+<!-- Filter Panel -->
+<div class="filter-wrap">
+  <div class="filter-inner">
+    <div class="search-row">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="種目名・学校名・クラブ名で検索…" autocomplete="off">
+      </div>
+      <div class="result-count" id="resultCount"></div>
+    </div>
+    <div class="seg-row">
+      <span class="seg-label">種別</span>
+      <div class="seg-btns" id="catFilter">
+        <button class="active" data-cat="all">すべて</button>
+        <button data-cat="学校部活動">学校部活動</button>
+        <button data-cat="認定地域クラブ">認定地域クラブ</button>
+        <button data-cat="文化・その他">文化・その他</button>
+      </div>
+    </div>
+    <div class="seg-row">
+      <span class="seg-label">曜日</span>
+      <div class="day-btns" id="dayFilter">
+        <button class="day-btn" data-day="月">月</button>
+        <button class="day-btn" data-day="火">火</button>
+        <button class="day-btn" data-day="水">水</button>
+        <button class="day-btn" data-day="木">木</button>
+        <button class="day-btn" data-day="金">金</button>
+        <button class="day-btn" data-day="土">土</button>
+        <button class="day-btn" data-day="日">日</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main" id="mainContent"></div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-title">脚注・免責事項</div>
+    <ul class="footnotes">
+      <li><span class="fn-index">1.</span><span>本ページに掲載しているすべての活動情報（活動日・活動時間・活動場所・会費等）は、令和8年3月時点のものです。令和7年度後半からの変更点については各競技ページをご確認ください。</span></li>
+      <li><span class="fn-index">2.</span><span>活動日・活動時間・活動場所は、学校行事・大会・テスト期間等により変更となる場合があります。最新情報は各学校または各クラブ運営主体へお問い合わせください。</span></li>
+      <li><span class="fn-index">3.</span><span>「認定地域クラブ」の会費には、地域クラブ活動運営費（指導者謝金・事務局経費等）・クラブ消耗品費・保険料・総合型地域スポーツクラブ年会費等が含まれます。上記以外に個人用具費・遠征費等が別途必要な場合があります。</span></li>
+      <li><span class="fn-index">4.</span><span>「認定地域クラブ」の練習会場までの送迎は、原則として保護者の責任で行ってください。遠方の場合はバス移動の場合もございます。</span></li>
+      <li><span class="fn-index">5.</span><span>活動計画全般に関するお問合せ：南魚沼市学校教育課 TEL 025-773-6700 ／ 各地域クラブへの申込み・お問合せは各競技ページ記載の運営主体へ。</span></li>
+      <li><span class="fn-index">*</span><span>南魚スポーツパラダイス TEL 025-777-3311 ／ スポーツ＆ライフ南魚沼 TEL 025-777-2244</span></li>
+    </ul>
+    <p class="footer-copy">© 2026 南魚沼市教育委員会 学校教育課　|　令和8年度 活動計画（R8.3改訂）完成版</p>
+  </div>
+</footer>
+
+<script>
+const ALL_DAYS = ["月","火","水","木","金","土","日"];
+
+const clubs = [
+  // ===== 陸上競技 =====
+  {sport:"陸上競技",icon:"🏃",type:"学校部活動",cat:"スポーツ",name:"大和中 陸上競技部",school:"大和中",days:["月","火","水","木","金"],time:"放課後 15:45〜18:00（1学期は18:15まで）",location:"大和中学校",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"大会期間中は土日活動あり"},
+  {sport:"陸上競技",icon:"🏃",type:"学校部活動",cat:"スポーツ",name:"八海中 陸上競技部",school:"八海中",days:["月","火","水","木","金"],time:"放課後 15:45〜18:30（1学期は18:30まで）",location:"八海中学校",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"陸上競技",icon:"🏃",type:"学校部活動",cat:"スポーツ",name:"六日町中 陸上競技部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後／土曜 午前",location:"六日町中学校",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"陸上競技",icon:"🏃",type:"学校部活動",cat:"スポーツ",name:"塩沢中 陸上競技部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後／土曜 午前",location:"塩沢中学校",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"陸上競技",icon:"🏃",type:"認定地域クラブ",cat:"スポーツ",name:"S&L Athlete Club",school:"市内全域",days:["土","日"],time:"土日 基本 9:00〜12:00（または 14:00〜17:00）※事前に保護者へ連絡",location:"市民体育館・十日町陸上競技場など",target:"中学生（市外者も可）",fee:"入会費：保険料・登録料・事務手数料 ／ 月会費：4〜9月 5,000円、10〜3月 10,000円",transport:"保護者送迎（各自）",notes:"楽しく陸上のスキルを高める"},
+  {sport:"陸上競技",icon:"🏃",type:"認定地域クラブ",cat:"スポーツ",name:"M3 Athlete Club",school:"市内全域",days:["月","水","金"],time:"月水金 基本 17:00〜19:00 または 14:00〜17:00",location:"市内中学校・十日町陸上競技場など",target:"南魚沼市内中学生",fee:"入会費：保険料・登録料・事務手数料 ／ 月会費：4〜9月 5,000円、10〜3月 10,000円",transport:"保護者送迎（各自）",notes:"主に基礎練習と記録会。令和6年度より活動"},
+
+  // ===== 水泳 =====
+  {sport:"水泳",icon:"🏊",type:"学校部活動",cat:"スポーツ",name:"塩沢中 水泳部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 16:00〜18:00 ／ 土曜 午前",location:"塩沢中学校プール",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"水泳",icon:"🏊",type:"認定地域クラブ",cat:"スポーツ",name:"MSA（南魚沼水泳協会）",school:"市内全域",days:["月","火","水","木","金"],time:"月〜金 9:00〜10:30または14:00〜16:00 ／ 八海高校プール：火木 16:00〜18:00",location:"ディスポート南魚沼プール・八海高校プール",target:"中学・高校生",fee:"入会費 ／ スポパラジュニア年会費（保険代含む）3,000円 ／ クラブ運営費（指導者謝金・事務局経費等）",transport:"保護者送迎（各自）",notes:"令和5年度より認定地域クラブとして活動。競技力向上を目指す"},
+  {sport:"水泳",icon:"🏊",type:"認定地域クラブ",cat:"スポーツ",name:"NSC 南魚スポーツパラダイス水泳クラブ",school:"市内全域",days:["火","木","土"],time:"火木 9:00〜10:30または14:00〜 ／ 土 9:00〜11:30",location:"ディスポート南魚沼プール",target:"南魚沼市内中学生",fee:"スポパラジュニア年会費（保険代含む）2,000円 ／ クラブ入場料別途 ／ 運営費",transport:"保護者送迎（各自）",notes:"令和8年度から認定地域クラブとして活動。体力・競技力の向上"},
+
+  // ===== バスケットボール（女子）=====
+  {sport:"バスケットボール（女子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"大和中 女子バスケットボール部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和中学校体育館",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"令和8年度全中まで部活動として参加予定。2・3年生以降はRising U15として大会参加予定"},
+  {sport:"バスケットボール（女子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"六日町中 女子バスケットボール部",school:"六日町中",days:["月","火","水","木","金","土"],time:"地域クラブが主。部活動は特別な場合のみ実施",location:"六日町中学校体育館",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"地域クラブ活動が主体。中体連への参加は学校として出場"},
+  {sport:"バスケットボール（女子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"塩沢中 女子バスケットボール部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校体育館",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"バスケットボール（女子）",icon:"🏀",type:"認定地域クラブ",cat:"スポーツ",name:"南魚沼 Rising U15（女子）",school:"市内全域",days:["土","日"],time:"第2・4土曜 基本 大和中で活動（状況により変更あり）",location:"大和中学校（基本）・市内各会場",target:"南魚沼市または近郊の中学生",fee:"入会費 6,000円 ／ スポパラジュニア年会費（保険代含む）3,000円 ／ クラブ運営費（指導者謝金・事務局経費・大会参加費・遠征費・登録費等）",transport:"保護者送迎（各自）。鍵当番協力あり",notes:"JBA登録・大会出場を目指す。令和8年度2・3年生はRising U15として大会参加予定"},
+
+  // ===== バスケットボール（男子）=====
+  {sport:"バスケットボール（男子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"大和中 男子バスケットボール部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和中学校体育館",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"バスケットボール（男子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"八海中 男子バスケットボール部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:30",location:"八海中学校体育館",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"バスケットボール（男子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"六日町中 男子バスケットボール部",school:"六日町中",days:["月","火","水","木","金","土"],time:"地域クラブ活動が主。部活動は特別な場合のみ",location:"六日町中学校体育館",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"六日町中学校で活動。練習試合・大会等への参加で両方活動することもある"},
+  {sport:"バスケットボール（男子）",icon:"🏀",type:"学校部活動",cat:"スポーツ",name:"塩沢中 男子バスケットボール部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校体育館",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"バスケットボール（男子）",icon:"🏀",type:"認定地域クラブ",cat:"スポーツ",name:"BLAZE（男子バスケ）",school:"市内全域",days:["土","日"],time:"土曜 9:00〜12:00（主に大和中）",location:"大和中学校（基本）",target:"大和中学校生徒（令和6年度よりBLAZEでJBA・中体連登録し大会出場）",fee:"入会費 ／ 年会費 ／ スポパラジュニア年会費（保険代含む）3,000円 ／ 指導者謝金・運営費・スポーツ保険加入料・事務手数料",transport:"保護者送迎（各自）",notes:"JBA登録・各大会への参加に向けた心身強化・技術習得。競技・世代を超えた交流、地域貢献"},
+  {sport:"バスケットボール（男子）",icon:"🏀",type:"認定地域クラブ",cat:"スポーツ",name:"Wolf Pack MBC",school:"六日町中・八海中・塩沢中",days:["土","日"],time:"土曜 9:00〜12:00（赤石小・大和中など）",location:"赤石小・大和中学校",target:"六日町中・八海中・塩沢中生徒",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 指導者謝金・運営費",transport:"保護者送迎（各自）",notes:"JBAへクラブ登録し、各大会へ参加する。地域クラブでの練習が主"},
+
+  // ===== 野球 =====
+  {sport:"野球",icon:"⚾",type:"学校部活動",cat:"スポーツ",name:"大和中 軟式野球部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和球場",target:"大和中学校生徒（他校は要相談）",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"野球",icon:"⚾",type:"学校部活動",cat:"スポーツ",name:"八海中 軟式野球部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"八海中学校野球場",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"悪天候時は八海中学校ピロティにて練習"},
+  {sport:"野球",icon:"⚾",type:"学校部活動",cat:"スポーツ",name:"六日町中 軟式野球部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"六日町中学校",target:"六日町中学校生徒（他校は要相談）",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"野球",icon:"⚾",type:"学校部活動",cat:"スポーツ",name:"塩沢中 軟式野球部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校",target:"塩沢中学校生徒（他校は要相談）",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"野球",icon:"⚾",type:"認定地域クラブ",cat:"スポーツ",name:"大和BC",school:"市内全域",days:["土","日"],time:"土日 9:00〜12:00（大和野球場・浦佐グラウンド等）",location:"大和野球場・浦佐グラウンドなど",target:"大和中学校生徒（他校は要相談）",fee:"入会金 ／ 月会費 4,000円 ／ 大会参加費・遠征費・登録費等（大和中野球部保護者会費を兼ねる）",transport:"保護者送迎（各自）",notes:"心身の健全な育成"},
+  {sport:"野球",icon:"⚾",type:"認定地域クラブ",cat:"スポーツ",name:"MJBC（六日町ジュニアベースボールクラブ）",school:"六日町中",days:["土","日"],time:"土日 9:00〜12:00（六日町中学校野球場）",location:"六日町中学校野球場（第1・4土曜）",target:"六日町中学校生徒（他校は要相談）",fee:"月会費 4,000円 ／ 大会参加費・遠征費・登録費等",transport:"保護者送迎（各自）",notes:"活動機会の確保"},
+  {sport:"野球",icon:"⚾",type:"認定地域クラブ",cat:"スポーツ",name:"塩沢4UNITY",school:"塩沢中",days:["土","日"],time:"土日 9:00〜12:00（塩沢中学校グラウンドなど）",location:"塩沢中学校グラウンド等",target:"塩沢中学校生徒（他校は要相談）",fee:"月会費 5,000円 ／ 大会参加費・遠征費・登録費等",transport:"保護者送迎（各自）",notes:"活動機会の確保"},
+  {sport:"野球",icon:"⚾",type:"認定地域クラブ",cat:"スポーツ",name:"八海",school:"八海中",days:["土","日"],time:"土日 9:00〜12:00（八海中学校野球場）",location:"八海中学校野球場・二日町球場",target:"八海中学校生徒",fee:"月会費 4,000円 ／ 大会参加費・遠征費・登録費等 ／ スポパラジュニア年会費",transport:"保護者送迎（各自）",notes:"健全な心身の育成"},
+
+  // ===== バレーボール =====
+  {sport:"バレーボール",icon:"🏐",type:"学校部活動",cat:"スポーツ",name:"大和中 バレーボール部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:00",location:"大和中学校体育館",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"バレーボール",icon:"🏐",type:"学校部活動",cat:"スポーツ",name:"八海中 バレーボール部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"八海中学校体育館",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"バレーボール",icon:"🏐",type:"学校部活動",cat:"スポーツ",name:"六日町中 バレーボール部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"六日町中学校体育館",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"地域クラブが主体"},
+  {sport:"バレーボール",icon:"🏐",type:"学校部活動",cat:"スポーツ",name:"塩沢中 バレーボール部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校体育館",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"バレーボール",icon:"🏐",type:"認定地域クラブ",cat:"スポーツ",name:"六日町YVC",school:"六日町中",days:["土","日"],time:"土曜 9:00〜12:00（六日町中学校第1体育館）",location:"六日町中学校第1体育館",target:"六日町中学校生徒",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 年会費 前期8,000円・後期8,000円 ／ 指導者保険料・謝金・事務局経費・備品代",transport:"保護者送迎（各自）",notes:"令和5年4月に認定地域クラブとして活動開始。技術の向上"},
+  {sport:"バレーボール",icon:"🏐",type:"認定地域クラブ",cat:"スポーツ",name:"大和バレーボールクラブ",school:"大和中",days:["土","日"],time:"土日 13:00〜18:00（大和中学校体育館）",location:"大和中学校体育館",target:"大和中学校生徒",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 年会費 前期8,000円・後期8,000円 ／ 指導者保険料・謝金・事務局経費・備品代",transport:"保護者送迎（各自）",notes:"令和8年4月より活動開始予定。技術の向上。定員25名程度"},
+  {sport:"バレーボール",icon:"🏐",type:"認定地域クラブ",cat:"スポーツ",name:"八海バレーボールクラブ",school:"八海中",days:["土","日"],time:"土日 8:00〜13:00（八海中学校第1体育館）",location:"八海中学校第1体育館",target:"八海中学校生徒",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 年会費 前期8,000円・後期8,000円 ／ 指導者保険料・謝金・事務局経費・備品代",transport:"保護者送迎（各自）",notes:"令和8年4月より活動開始予定。技術の向上。定員25名程度"},
+  {sport:"バレーボール",icon:"🏐",type:"認定地域クラブ",cat:"スポーツ",name:"塩沢バレーボールクラブ",school:"塩沢中",days:["土","日"],time:"土曜 9:00〜12:00（塩沢中学校第1体育館）",location:"塩沢中学校第1体育館",target:"塩沢中学校生徒",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 年会費 前期8,000円・後期8,000円 ／ 指導者保険料・謝金・事務局経費・備品代",transport:"保護者送迎（各自）",notes:"令和8年4月より活動開始予定。技術の向上。定員25名程度"},
+
+  // ===== ソフトテニス（女子）=====
+  {sport:"ソフトテニス（女子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"大和中 女子ソフトテニス部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和中学校テニスコート",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"ソフトテニス（女子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"八海中 女子ソフトテニス部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"八海中学校テニスコート",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"ソフトテニス（女子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"六日町中 女子ソフトテニス部",school:"六日町中",days:["月","火","水","木","金","土"],time:"地域クラブが主",location:"六日町中学校テニスコート",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"ソフトテニス（女子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"塩沢中 女子ソフトテニス部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校テニスコート",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"地域クラブ参加者は部活動なし"},
+  {sport:"ソフトテニス（女子）",icon:"🎾",type:"認定地域クラブ",cat:"スポーツ",name:"南魚沼RYDEEN（女子）",school:"市内全域",days:["火","木","土"],time:"火木 14:00〜16:30 運動公園テニスコート ／ 土 9:00〜12:00 北辰小またはディスポート ※大会前は臨時練習あり・テスト期間は休部",location:"南魚沼市運動公園テニスコート・北辰小学校・ディスポート南魚沼",target:"市内中学校（男女、中学校全校で定員あり）",fee:"入会費 3,000円 ／ 半年会費 9,000円（半年ごと前期分を納入） ／ 連盟登録料・練習会場費・大会参加費・ボール等消耗品費・指導者謝金（交通費含む）",transport:"保護者送迎（各自）。遠征費は参加者負担",notes:"令和5年度より中体連認定クラブ。礼節・競技力の向上。中学生一緒に練習"},
+
+  // ===== ソフトテニス（男子）=====
+  {sport:"ソフトテニス（男子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"大和中 男子ソフトテニス部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"大和中学校テニスコート",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"ソフトテニス（男子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"六日町中 男子ソフトテニス部",school:"六日町中",days:["月","火","水","木","金","土"],time:"地域クラブが主",location:"六日町中学校テニスコート",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"令和8年度中体連は南魚沼RYDEENで出場"},
+  {sport:"ソフトテニス（男子）",icon:"🎾",type:"学校部活動",cat:"スポーツ",name:"塩沢中 男子ソフトテニス部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校テニスコート",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"地域クラブ参加者は部活動なし"},
+  {sport:"ソフトテニス（男子）",icon:"🎾",type:"認定地域クラブ",cat:"スポーツ",name:"南魚沼RYDEEN（男子）",school:"市内全域",days:["火","木","土"],time:"火木 14:00〜16:30 運動公園テニスコート ／ 土 9:00〜12:00 北辰小またはディスポート ※大会前は臨時練習あり・テスト期間は休部",location:"南魚沼市運動公園テニスコート・北辰小学校・ディスポート南魚沼",target:"市内中学校（男女、中学校全校で定員あり）",fee:"入会費 3,000円 ／ 半年会費 9,000円（半年ごと前期分を納入） ／ 連盟登録料・練習会場費・大会参加費・ボール等消耗品費・指導者謝金（交通費含む）",transport:"保護者送迎（各自）。遠征費は参加者負担",notes:"令和5年度より中体連認定クラブ。礼節・競技力の向上。中学生一緒に練習"},
+
+  // ===== 卓球 =====
+  {sport:"卓球",icon:"🏓",type:"学校部活動",cat:"スポーツ",name:"大和中 卓球部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和中学校",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"卓球",icon:"🏓",type:"学校部活動",cat:"スポーツ",name:"八海中 卓球部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"八海中学校",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"卓球",icon:"🏓",type:"学校部活動",cat:"スポーツ",name:"六日町中 卓球部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"六日町中学校",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"卓球",icon:"🏓",type:"学校部活動",cat:"スポーツ",name:"塩沢中 卓球部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"卓球",icon:"🏓",type:"認定地域クラブ",cat:"スポーツ",name:"南魚スマッシュJ.C.",school:"市内全域",days:["土","日"],time:"土曜 14:00〜17:00（冬季）／ 日曜 14:00〜17:00 ディスポート南魚沼アリーナ ※冬季合宿期間中は妻有地域",location:"ディスポート南魚沼アリーナ",target:"市内全域",fee:"スポパラ年会費（保険代含む）2,000円（ジュニア区分）または 3,000円（個人区分） ／ 入会費（ジュニア区分の方のみ） ／ 地域クラブ運営費（指導者謝金・事務局経費等）",transport:"保護者送迎（各自）",notes:""},
+
+  // ===== バドミントン =====
+  {sport:"バドミントン",icon:"🏸",type:"学校部活動",cat:"スポーツ",name:"塩沢中 バドミントン部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校体育館",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"バドミントン",icon:"🏸",type:"認定地域クラブ",cat:"スポーツ",name:"こばとクラブY（大和中学区）",school:"大和中",days:["土","日"],time:"毎週 土曜 または日曜（二日町地域で合同練習）",location:"雪国スポーツ館（こばとクラブY）",target:"大和中学校生徒",fee:"入会費 3,000円（スポパラジュニア年会費 保険代含む） ／ 年会費 10,000円（指導者謝金・シャトル等消耗品費・登録費）",transport:"保護者送迎（各自）",notes:"小中学生合同練習。体力・精神力向上。Cクラブへの入会で中学生単独の火曜練習にも参加可能"},
+  {sport:"バドミントン",icon:"🏸",type:"認定地域クラブ",cat:"スポーツ",name:"こばとクラブM（六日町中・八海中学区）",school:"六日町中・八海中",days:["土","日"],time:"毎週 土曜 または日曜 二日町地域",location:"八海中学校",target:"六日町中・八海中学校生徒",fee:"入会費 3,000円（スポパラジュニア年会費 保険代含む） ／ 年会費 10,000円",transport:"保護者送迎（各自）",notes:"小中学生合同練習。体力・精神力向上"},
+  {sport:"バドミントン",icon:"🏸",type:"認定地域クラブ",cat:"スポーツ",name:"こばとクラブS（塩沢中学区）",school:"塩沢中",days:["土","日"],time:"毎週 土曜 または日曜",location:"塩沢小学校",target:"塩沢中学校生徒",fee:"入会費 3,000円（スポパラジュニア年会費 保険代含む） ／ 年会費 10,000円",transport:"保護者送迎（各自）",notes:"小中学生合同練習。体力・精神力向上"},
+  {sport:"バドミントン",icon:"🏸",type:"認定地域クラブ",cat:"スポーツ",name:"こばとクラブC（市内全域・中学生単独）",school:"市内全域",days:["火","土","日"],time:"火曜（中学生のみ）＋所属するY/M/Sの活動に参加可能",location:"おおまき小学校・二日町地域",target:"市内中学生（中学生のみ参加可能）",fee:"入会費 3,000円（スポパラジュニア年会費 保険代含む） ／ 年会費 10,000円",transport:"保護者送迎（各自）",notes:"Cへ入会すると中学生単独の火曜練習に加え、所属するY・M・Sの活動にも参加可能"},
+
+  // ===== 柔道 =====
+  {sport:"柔道",icon:"🥋",type:"学校部活動",cat:"スポーツ",name:"大和中 柔道部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00",location:"大和中学校柔道場",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"柔道",icon:"🥋",type:"学校部活動",cat:"スポーツ",name:"塩沢中 柔道部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校柔道場",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"柔道",icon:"🥋",type:"認定地域クラブ",cat:"スポーツ",name:"南魚沼柔道クラブ（南魚沼柔道連盟）",school:"市内全域",days:["月","水","金","土"],time:"月水金 17:30〜20:00（年間を通じて）／ 土 9:00〜12:00",location:"大和中柔道場ほか",target:"南魚沼市内の中学生",fee:"入会費 3,000円（スポパラジュニア年会費 保険代含む） ／ 年会費 5,000円（指導者謝金・事務局経費の一部・大会参加費等）",transport:"保護者送迎（各自）",notes:""},
+
+  // ===== 剣道 =====
+  {sport:"剣道",icon:"⚔️",type:"学校部活動",cat:"スポーツ",name:"大和中 剣道部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30（1学期 18:15まで）",location:"大和中学校武道場",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"剣道連盟の練習に参加する場合は部活動なしとなる場合あり"},
+  {sport:"剣道",icon:"⚔️",type:"学校部活動",cat:"スポーツ",name:"六日町中 剣道部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"六日町中学校武道場",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"中体連は学校として参加"},
+  {sport:"剣道",icon:"⚔️",type:"学校部活動",cat:"スポーツ",name:"塩沢中 剣道部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校武道場",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"剣道",icon:"⚔️",type:"認定地域クラブ",cat:"スポーツ",name:"南魚剣道クラブ",school:"市内全域",days:["月","水","金","土"],time:"月水金 17:30〜20:00 ／ 土 9:00〜12:00（六日町中学校武道場）※大会・練習試合等がある場合は土日に活動も",location:"六日町中学校武道場",target:"南魚沼市内の中学生",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 年会費 5,000円（指導者謝金・物品購入・事務局経費・灯油代・大会参加費等）",transport:"保護者送迎（大会・練習試合会場も含む）",notes:"八海中の部活動の代替として練習環境と大会への出場機会を設ける"},
+
+  // ===== アルペンスキー =====
+  {sport:"アルペンスキー",icon:"⛷️",type:"学校部活動",cat:"スポーツ",name:"塩沢中 アルペンスキー部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"4〜10月：各自所属する部での活動 ／ 11〜3月：アルペン部として活動。大会時は部活動として参加",location:"シャトー塩沢スキー場ほか",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"保護者送迎（スキー場）",notes:"令和8年の中体連は部活動として参加予定"},
+  {sport:"アルペンスキー",icon:"⛷️",type:"認定地域クラブ",cat:"スポーツ",name:"六日町ジュニアスキークラブ",school:"六日町中学区",days:["土","日"],time:"土日（シーズン中）市内スキー場（主としてNASPAスキーガーデン・八海山スキー場）",location:"市内スキー場",target:"六日町中学校区生徒（他校は要相談）",fee:"スポパラジュニア年会費（保険代含む）3,000円 ／ 初回保険料 ／ クラブ運営費（指導者謝金・事務局費等） ／ 交通費の一部",transport:"保護者送迎（各自）",notes:"アルペンスキーの普及。令和8年中体連は部活動として参加予定"},
+  {sport:"アルペンスキー",icon:"⛷️",type:"認定地域クラブ",cat:"スポーツ",name:"上越国際ジュニアスキークラブ",school:"市内全域",days:["土","日"],time:"土日（シーズン中）上越国際スキー場",location:"上越国際スキー場",target:"中学生（地域限定なし）",fee:"会費（年）15,000円・20,000円・30,000円（コース別）/ クラブ運営費",transport:"保護者送迎（各自）",notes:"楽しみながら友達を作る"},
+  {sport:"アルペンスキー",icon:"⛷️",type:"認定地域クラブ",cat:"スポーツ",name:"塩沢スキージュニア",school:"塩沢中学区",days:["土","日"],time:"土日（シーズン中）",location:"市内スキー場",target:"中学生",fee:"クラブ運営費（コーチ経費等） 5,000円/月",transport:"保護者送迎（各自）",notes:"技術向上・運動能力の開花・動ける身体作り"},
+  {sport:"アルペンスキー",icon:"⛷️",type:"認定地域クラブ",cat:"スポーツ",name:"JIMS RACING",school:"市内全域",days:["土","日"],time:"シーズン中 土日 市内スキー場（主としてNASPAスキーガーデン・八海山スキー場） ／ 大会出場の場合、クラブ指導者が現地で指導・引率",location:"市内スキー場",target:"中学生（市外者も可）",fee:"入会費 3,000円 ／ 年会費 15,000円 ／ 地域クラブ運営費（指導者謝金・事務局費等） ／ 交通費の一部",transport:"保護者送迎（各自）",notes:"技術向上・運動能力の開花。令和8年度より活動開始（定員あり）"},
+
+  // ===== クロカンスキー =====
+  {sport:"クロスカントリースキー",icon:"🎿",type:"学校部活動",cat:"スポーツ",name:"塩沢中 クロスカントリー部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"11〜3月 クロカンシーズン中",location:"塩沢中学校・欠之上クロカンコース等",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"保護者送迎（スキー場）",notes:"南魚沼ジュニアレーシングクラブと連動して練習"},
+  {sport:"クロスカントリースキー",icon:"🎿",type:"認定地域クラブ",cat:"スポーツ",name:"南魚沼ジュニアレーシングクラブ",school:"市内全域",days:["火","木","土"],time:"火木土のいずれか（放課後）／ シーズン中 ／ 降雪期は夜間 欠之上クロカンコースでナイター練習予定",location:"市内グラウンド・欠之上クロカンコース等",target:"南魚沼市内の中学生",fee:"入会費 3,000円（スポパラジュニア年会費 保険代含む） ／ 年会費 10,000円（指導者保険代・消耗品費・事務費等）",transport:"保護者送迎（各自）",notes:"ジュニアアスリートの育成。大和中・六日町中・八海中の中体連は学校として参加予定"},
+
+  // ===== スキージャンプ =====
+  {sport:"スキージャンプ",icon:"🛫",type:"学校部活動",cat:"スポーツ",name:"塩沢中 スキージャンプ部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"4〜10月：各自所属する部での活動 ／ 11〜3月：ジャンプ部として活動。大会時は部活動として参加",location:"塩沢中学校ほか",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"保護者送迎",notes:"令和8年の中体連は部活動として参加予定"},
+  {sport:"スキージャンプ",icon:"🛫",type:"認定地域クラブ",cat:"スポーツ",name:"南魚沼ジャンプクラブ",school:"市内全域",days:["月","水","土"],time:"月水土のいずれかが基本（シーズン中）塩沢小 14:00〜17:00",location:"塩沢小学校",target:"中学生（市外者も可）",fee:"入会費 3,000円（保険料・事務手数料） ／ 年会費 4,000円（クラブ運営費 事務経費・道具購入補助費等）",transport:"遠征の場合の送迎は保護者と調整",notes:"令和4年4月に認定地域クラブとして活動開始"},
+
+  // ===== サッカー =====
+  {sport:"サッカー",icon:"⚽",type:"学校部活動",cat:"スポーツ",name:"塩沢中 サッカー部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校グラウンド",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+
+  // ===== 吹奏楽 =====
+  {sport:"吹奏楽",icon:"🎺",type:"学校部活動",cat:"文化・その他",name:"大和中 吹奏楽部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和中学校音楽室",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"吹奏楽",icon:"🎺",type:"学校部活動",cat:"文化・その他",name:"八海中 吹奏楽部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"八海中学校音楽室",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"吹奏楽",icon:"🎺",type:"学校部活動",cat:"文化・その他",name:"六日町中 吹奏楽部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"六日町中学校音楽室",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"吹奏楽",icon:"🎺",type:"学校部活動",cat:"文化・その他",name:"塩沢中 吹奏楽部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"塩沢中学校音楽室",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:"1学期活動あり。2学期以降は認定地域クラブが実施される場合は部活動は実施しない"},
+  {sport:"吹奏楽",icon:"🎺",type:"認定地域クラブ",cat:"文化・その他",name:"南魚沼吹奏楽クラブ",school:"市内全域",days:["土","日"],time:"土曜 不定期 ／ 月1〜2回 まほろば（一村尾）",location:"まほろば（一村尾）",target:"南魚沼市内の中学生",fee:"3,000円（保険料等）",transport:"保護者送迎",notes:"南魚沼市社会教育課運営。楽器は原則個人所有またはメーカーレンタルシステム利用。活動機会の確保"},
+  {sport:"吹奏楽",icon:"🎺",type:"認定地域クラブ",cat:"文化・その他",name:"Shiozawa Brass Band",school:"塩沢中",days:["土"],time:"土曜（月1〜2回）塩沢中音楽室で練習 ／ コンクール・演奏会等では日曜も活動",location:"塩沢中学校音楽室",target:"塩沢中学校生徒",fee:"3,000円（保険料等）",transport:"保護者送迎",notes:"保護者見守りのもと主に個人スキルアップを図る。コンクールは指導者を依頼予定"},
+  {sport:"吹奏楽",icon:"🎺",type:"認定地域クラブ",cat:"文化・その他",name:"六日町吹奏楽クラブ",school:"六日町中",days:["土"],time:"月1〜2回のうち数回は外部講師指導（講師都合等で曜日変更あり） ／ 土曜 9:00〜12:00 六日町中学校第一音楽室",location:"六日町中学校第一音楽室",target:"六日町中学校吹奏楽部に所属の生徒",fee:"3,000円（保険料等）",transport:"保護者送迎（保護者による当番制の見守りと鍵の開け閉めあり）",notes:"楽器は個人所有または六日町中からの借用。主に個人スキルアップ（コンクール練習も含む）"},
+
+  // ===== 文化部 =====
+  {sport:"文化部（美術）",icon:"🎨",type:"学校部活動",cat:"文化・その他",name:"大和中 美術部",school:"大和中",days:["月","火","水","木","金"],time:"平日 放課後 15:45〜18:00（1学期 18:15まで）",location:"大和中学校美術室",target:"大和中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"文化部（文化）",icon:"✏️",type:"学校部活動",cat:"文化・その他",name:"八海中 文化部",school:"八海中",days:["月","火","水","木","金"],time:"平日 放課後 16:00〜18:30",location:"八海中学校",target:"八海中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"文化部（文化）",icon:"✏️",type:"学校部活動",cat:"文化・その他",name:"六日町中 文化部",school:"六日町中",days:["月","火","水","木","金","土"],time:"平日 放課後 ／ 土曜 午前",location:"六日町中学校",target:"六日町中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"文化部（美術）",icon:"🎨",type:"学校部活動",cat:"文化・その他",name:"塩沢中 美術部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"学年・所属年数により活動開始・終了時間が異なる",location:"塩沢中学校美術室",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"文化部（PC）",icon:"💻",type:"学校部活動",cat:"文化・その他",name:"塩沢中 PC部",school:"塩沢中",days:["月","火","水","木","金","土"],time:"平日 放課後／土曜 ／ ロボットコンテスト近くは特別活動あり",location:"塩沢中学校・ISEロボットセンター",target:"塩沢中学校生徒",fee:"部活動費（学校規定）",transport:"送迎不要",notes:""},
+  {sport:"プログラミング・ロボット",icon:"🤖",type:"認定地域クラブ",cat:"文化・その他",name:"ロボ南魚沼（プログラミング）",school:"市内全域",days:["木","土"],time:"木曜 18:00〜20:40 ／ 金曜 17:10〜20:40 ／ 土曜 10:30〜17:30（ISEロボットセンター・魚沼サンティックスクール）",location:"ISEロボットセンター・魚沼サンティックスクール",target:"市内小中学生（定員なし）",fee:"入会金 10,000円 ／ 月会費 15,000円〜20,000円（プログラミング指導・教材維持費用） ／ 登録料・教材準備費用・事務手数料",transport:"保護者送迎",notes:"ロボットコンテスト（新潟県大会：9月下旬 ／ 関東甲信越大会：1月上旬）を目指す。技術向上のため活動制約なし"},
+];
+
+// Unique sports for section grouping
+const sports = [...new Set(clubs.map(c => c.sport))];
+
+let activeCategory = "all";
+let activeDays = new Set();
+let searchTerm = "";
+
+function getSearchable(c) {
+  return [c.sport, c.name, c.school, c.type, c.location, c.target, c.notes, c.fee].join(" ").toLowerCase();
+}
+
+function matchesDays(c) {
+  if (activeDays.size === 0) return true;
+  return [...activeDays].every(d => c.days.includes(d));
+}
+
+function matchesCategory(c) {
+  if (activeCategory === "all") return true;
+  if (activeCategory === "学校部活動") return c.type === "学校部活動";
+  if (activeCategory === "認定地域クラブ") return c.type === "認定地域クラブ";
+  if (activeCategory === "文化・その他") return c.cat === "文化・その他";
+  return true;
+}
+
+function matchesSearch(c) {
+  if (!searchTerm) return true;
+  return getSearchable(c).includes(searchTerm.toLowerCase());
+}
+
+function isVisible(c) {
+  return matchesCategory(c) && matchesDays(c) && matchesSearch(c);
+}
+
+function renderCards() {
+  const main = document.getElementById("mainContent");
+  let html = "";
+  let totalVisible = 0;
+  let schoolVisible = 0;
+  let clubVisible = 0;
+
+  sports.forEach(sport => {
+    const sportClubs = clubs.filter(c => c.sport === sport);
+    const visibleClubs = sportClubs.filter(isVisible);
+    if (visibleClubs.length === 0) return;
+    totalVisible += visibleClubs.length;
+    visibleClubs.forEach(c => {
+      if (c.type === "学校部活動") schoolVisible++;
+      else if (c.type === "認定地域クラブ") clubVisible++;
+    });
+
+    const icon = sportClubs[0].icon;
+    html += `<div class="sport-section">`;
+    html += `<div class="sport-header">
+      <div class="sport-icon">${icon}</div>
+      <div class="sport-title">${sport}</div>
+      <div class="sport-count">${visibleClubs.length}件</div>
+    </div>`;
+    html += `<div class="cards-grid">`;
+    visibleClubs.forEach(c => {
+      const badgeClass = c.type === "学校部活動" ? "badge-school" : "badge-club";
+      const daysHtml = ALL_DAYS.map(d => {
+        const active = c.days.includes(d);
+        const highlighted = active && activeDays.has(d);
+        if (!active) return `<span class="day-chip" style="opacity:.35">${d}</span>`;
+        return `<span class="day-chip${highlighted ? " highlight" : ""}">${d}</span>`;
+      }).join("");
+      html += `<div class="card">
+        <div class="card-header">
+          <div class="card-name">${c.name}</div>
+          <div class="badge ${badgeClass}"><span class="badge-dot"></span>${c.type}</div>
+        </div>
+        <div class="card-row"><span class="card-row-icon">🏫</span><span class="card-row-text">${c.school}</span></div>
+        <div class="card-row"><span class="card-row-icon">🕐</span><span class="card-row-text">${c.time}</span></div>
+        <div class="card-row"><span class="card-row-icon">📍</span><span class="card-row-text">${c.location}</span></div>
+        <div class="card-row"><span class="card-row-icon">👤</span><span class="card-row-text">${c.target}</span></div>
+        ${c.notes ? `<div class="card-row"><span class="card-row-icon">📝</span><span class="card-row-text" style="color:#86868b">${c.notes}</span></div>` : ""}
+        <div class="card-days">${daysHtml}</div>
+        <div class="card-divider"></div>
+        <div class="card-fee"><strong>💴 費用：</strong>${c.fee}<br><strong>🚗 送迎：</strong>${c.transport}</div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  if (totalVisible === 0) {
+    html = `<div class="no-results"><h3>該当するクラブが見つかりませんでした</h3><p>検索条件を変更してお試しください</p></div>`;
+  }
+
+  main.innerHTML = html;
+  document.getElementById("resultCount").textContent = totalVisible + "件";
+
+  // Update stats in hero only once
+  const total = clubs.length;
+  const school = clubs.filter(c => c.type === "学校部活動").length;
+  const regional = clubs.filter(c => c.type === "認定地域クラブ").length;
+  if (!document.querySelector(".stats-set")) {
+    document.getElementById("statTotal").textContent = total;
+    document.getElementById("statSchool").textContent = school;
+    document.getElementById("statClub").textContent = regional;
+  }
+}
+
+// Event listeners
+document.getElementById("searchInput").addEventListener("input", e => {
+  searchTerm = e.target.value.trim();
+  renderCards();
+});
+
+document.getElementById("catFilter").addEventListener("click", e => {
+  if (!e.target.matches("button")) return;
+  activeCategory = e.target.dataset.cat;
+  document.querySelectorAll("#catFilter button").forEach(b => b.classList.toggle("active", b.dataset.cat === activeCategory));
+  renderCards();
+});
+
+document.getElementById("dayFilter").addEventListener("click", e => {
+  if (!e.target.matches(".day-btn")) return;
+  const day = e.target.dataset.day;
+  if (activeDays.has(day)) { activeDays.delete(day); e.target.classList.remove("active"); }
+  else { activeDays.add(day); e.target.classList.add("active"); }
+  renderCards();
+});
+
+// Initial render
+renderCards();
+document.getElementById("resultCount").textContent = clubs.length + "件";
+</script>
+</body>
+</html>
